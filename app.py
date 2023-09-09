@@ -20,7 +20,7 @@ def get_info():
     # Create the JSON response
     response = {
         "slack_name": slack_name,
-        "current_day": datetime.datetime.now().strftime('%A'),
+        "current_day": current_day,
         "utc_time": utc_time,
         "track": track,
         "github_file_url": github_file_url,
