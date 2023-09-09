@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 import datetime
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -22,15 +23,12 @@ def get_info():
         "utc_time": utc_time,
         "track": track,
         "github_file_url": github_file_url,
-        "github_repo_url": github_repo_url,
-        "password": "Bobo",  
+        "github_repo_url": github_repo_url, 
         "status_code": 200
     }
     
     return jsonify(response)
 
 if __name__ == '__main__':
-    
-    from waitress import serve
-    serve(app, host="0.0.0.0", port=8080)
+    serve(app, host="0.0.0.0", port=5000)
 
