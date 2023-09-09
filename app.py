@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
 import datetime
-from waitress import serve
 
 app = Flask(__name__)
 
@@ -8,7 +7,9 @@ app = Flask(__name__)
 def get_info():
     slack_name = request.args.get('slack_name')
     track = request.args.get('track')
-    
+
+    # Get the current day of the week
+    current_day = datetime.datetime.now().strftime('%A')
     # Generate the current UTC time with the correct format
     utc_time = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
     
@@ -30,5 +31,7 @@ def get_info():
     return jsonify(response)
 
 if __name__ == '__main__':
-    serve(app, host="0.0.0.0", port=5000)
+    app.run(host='0.0.0.0', port=5000)
 
+
+   
